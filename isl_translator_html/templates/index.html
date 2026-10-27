@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10151f"><title>ISL Translator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar"><div class="logo">ISL<span>.</span></div><div><div class="eyebrow">SIGN LANGUAGE · LIVE RECOGNITION</div><h1>Indian Sign Language <span>Translator</span></h1><p class="intro">Show a hand sign to the camera and build a word, one letter at a time.</p></div></header>
+    <section class="layout">
+      <section class="panel camera-panel">
+        <div class="panel-head"><div><h2>Live camera</h2><p>Use clear lighting and keep your hand inside the frame.</p></div><span id="cameraState" class="status-pill">Camera off</span></div>
+        <div class="camera-frame"><video id="video" autoplay playsinline muted></video><canvas id="captureCanvas" hidden></canvas><div id="placeholder" class="placeholder"><div class="camera-symbol">◎</div><strong>Your camera preview appears here</strong><span>Press Start camera and allow access.</span></div></div>
+        <div class="button-row"><button id="startBtn" class="btn primary">Start camera</button><button id="stopBtn" class="btn secondary" disabled>Stop camera</button></div>
+        <p id="notice" class="notice" role="status">Camera is off.</p>
+      </section>
+      <aside class="side-column">
+        <section class="panel prediction-panel"><div class="eyebrow">CURRENT PREDICTION</div><div id="letter" class="big-letter">—</div><div class="confidence-row"><span>Model confidence</span><strong id="confidence">0%</strong></div><div class="meter"><div id="meterFill"></div></div><p id="predictionMessage" class="muted">Waiting for camera…</p><div id="topPredictions" class="top-preds"></div><p class="footnote">Confidence is the model's score, not a guarantee of correctness.</p></section>
+        <section class="panel word-panel"><div class="panel-head compact"><div><h2>Build a sentence</h2><p>Hold a stable sign for 1.2 seconds to add it.</p></div></div><label>Current word</label><div id="word" class="word-box" aria-live="polite"></div><label>Full sentence</label><div id="sentence" class="sentence-box" aria-live="polite">Your sentence will appear here.</div><div class="button-row controls"><button id="spaceBtn" class="btn secondary">Add space</button><button id="backspaceBtn" class="btn secondary">Backspace</button><button id="clearBtn" class="btn danger">Clear</button></div></section>
+      </aside>
+    </section>
+    <footer>Custom HTML interface · Python model backend · Camera frames are processed by this app.</footer>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body></html>

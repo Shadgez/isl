@@ -1,0 +1,5 @@
+Flask>=3.0,<4
+numpy>=1.26,<2
+opencv-python-headless>=4.9,<5
+tensorflow>=2.15,<2.18
+mediapipe>=0.10.14,<0.11
